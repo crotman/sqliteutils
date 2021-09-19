@@ -1,12 +1,9 @@
 ## Test environments
-
-* GitHub Actions (ubuntu-16.04): devel, release, oldrel, 3.5, 3.4, 3.3
-* GitHub Actions (windows): release, oldrel
-* GitHub Actions (macOS): release
-* win-builder: devel
+* local windows, R 4.1.0
 
 ## R CMD check results
+There were no ERRORs, WARNINGs nor NOTEs. 
 
-0 errors | 0 warnings | 1 note
+## Downstream dependencies
 
-* This is a new release.
+There are currently no downstream dependencies for this package
