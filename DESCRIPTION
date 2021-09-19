@@ -1,5 +1,5 @@
 Package: sqliteutils
-Title: Utiliy Functions for SQLite
+Title: Utility Functions for SQLite
 Version: 0.1.0
 Authors@R: 
     person(given = "Bruno",

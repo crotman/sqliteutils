@@ -11,49 +11,63 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/sqliteutils)](https://CRAN.R-project.org/package=sqliteutils)
 <!-- badges: end -->
 
-The goal of sqliteutils is to …
+The goal of sqliteutils is to provide utility functions to deal with
+SQLite
 
 ## Installation
 
-You can install the released version of sqliteutils from
-[CRAN](https://CRAN.R-project.org) with:
+You can install sqliteutils from [Github](https://github.com) with:
 
 ``` r
-install.packages("sqliteutils")
+devtools::install_github("crotman/sqliteutils")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+SQLIte does not have a date type. When you insert dates in a SQLIte table using `DBI::dbWriteTable()`, for instance, they are converted to a numeric value.
+
+Using `slu_date_to_r()` you can convert the value back to the original date.
 
 ``` r
 library(sqliteutils)
-## basic example code
+
+data <- data.frame(date = c(as.Date("2021-09-18"), as.Date("2021-09-19"))
+con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+DBI::dbWriteTable(conn = con, name = "dates", value = data )
+data_from_bd <- DBI::dbReadTable(conn = con, name = "dates")
+original_date <- slu_date_to_r(data_from_bd$date)
+DBI::dbDisconnect(con)
+
+print(original_date)
+
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+using `slu_date_to_sqlite()` you can make the inverse: convert a date to the number SQLite would store it if we called `DBI::dbWriteTable()`
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+data <- data.frame(
+  date = c(as.Date("2021-09-19"), as.Date("2021-09-20"))
+)
+DBI::dbWriteTable(conn = con, name = "dates", value = data )
+data_from_bd <- dplyr::tbl(src = con, "dates") %>%  dplyr::collect()
+data_with_sqlite_dates <- data %>%
+dplyr::mutate(
+  date = slu_date_to_sqlite(date)
+)
+DBI::dbDisconnect(con)
+
+print(data_from_bd)
+print(data_with_sqlite_dates)
+
+
+
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
 
-You can also embed plots, for example:
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+
+
+
+
