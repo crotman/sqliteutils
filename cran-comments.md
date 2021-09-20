@@ -1,3 +1,13 @@
+
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Added more details about the package functionality and implemented
+methods in the Description text 
+
+* written package names, software names and API (application
+programming interface) names in single quotes in title and description
+
 ## Test environments
 * local windows, R 4.1.0
 

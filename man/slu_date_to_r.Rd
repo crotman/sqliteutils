@@ -2,18 +2,18 @@
 % Please edit documentation in R/slu_date_to_r.R
 \name{slu_date_to_r}
 \alias{slu_date_to_r}
-\title{Converts dates stored on SQLIte to their original values}
+\title{Converts dates stored on 'SQLite' to their original values}
 \usage{
 slu_date_to_r(date_sqlite)
 }
 \arguments{
-\item{date_sqlite}{the numbers that result from inserting dates on SQLite}
+\item{date_sqlite}{the numbers that result from inserting dates on 'SQLite'}
 }
 \value{
 the dates that were originally inserted
 }
 \description{
-Converts dates stored on SQLIte to their original values
+Converts dates stored on 'SQLite' to their original values
 }
 \examples{
 data <- data.frame(date = as.Date("2021-09-18"))

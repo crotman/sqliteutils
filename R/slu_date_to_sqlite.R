@@ -1,8 +1,8 @@
-#' Converts dates to the numeric values that they would be stored on SQLIte
+#' Converts dates to the numeric values as which they would be stored on SQLite
 #'
 #' @param date_r dates as returned by as.Date() in R
 #'
-#' @return integers that correspond to the numbers that are stored on SQLite when DBI:dbWriteTable is used
+#' @return integers that correspond to the numbers that are stored on SQLite when `DBI:dbWriteTable` is used
 #' @export
 #'
 #' @examples

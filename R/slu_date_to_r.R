@@ -1,6 +1,6 @@
-#' Converts dates stored on SQLIte to their original values
+#' Converts dates stored on 'SQLite' to their original values
 #'
-#' @param date_sqlite the numbers that result from inserting dates on SQLite
+#' @param date_sqlite the numbers that result from inserting dates on 'SQLite'
 #'
 #' @return the dates that were originally inserted
 #' @export

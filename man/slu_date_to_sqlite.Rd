@@ -2,7 +2,7 @@
 % Please edit documentation in R/slu_date_to_sqlite.R
 \name{slu_date_to_sqlite}
 \alias{slu_date_to_sqlite}
-\title{Converts dates to the numeric values that they would be stored on SQLIte}
+\title{Converts dates to the numeric values as which they would be stored on SQLite}
 \usage{
 slu_date_to_sqlite(date_r)
 }
@@ -10,10 +10,10 @@ slu_date_to_sqlite(date_r)
 \item{date_r}{dates as returned by as.Date() in R}
 }
 \value{
-integers that correspond to the numbers that are stored on SQLite when DBI:dbWriteTable is used
+integers that correspond to the numbers that are stored on SQLite when \code{DBI:dbWriteTable} is used
 }
 \description{
-Converts dates to the numeric values that they would be stored on SQLIte
+Converts dates to the numeric values as which they would be stored on SQLite
 }
 \examples{
 

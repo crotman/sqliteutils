@@ -1,12 +1,12 @@
 Package: sqliteutils
-Title: Utility Functions for SQLite
+Title: Utility Functions for 'SQLite'
 Version: 0.1.0
 Authors@R: 
     person(given = "Bruno",
            family = "Crotman",
            role = c("aut", "cre"),
            email = "crotman@gmail.com")
-Description: This package has funcions that help developers when using and SQLite database.
+Description: A tool for working with 'SQLite' databases. 'SQLite' has some idiosyncrasies and limitations that impose some hurdles to the R developer who is using this database as a repository. For instance, 'SQLite' doesn't have a date type and 'sqliteutils' has some functions to deal with that.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)

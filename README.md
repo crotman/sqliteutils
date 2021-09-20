@@ -11,22 +11,28 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/sqliteutils)](https://CRAN.R-project.org/package=sqliteutils)
 <!-- badges: end -->
 
-The goal of sqliteutils is to provide utility functions to deal with
-SQLite
+A tool for working with `SQLite` databases. `SQLite` has some
+idiosyncrasies and limitations that impose some hurdles to the R
+developer. For instance, `SQLite` doesn’t have a date type and
+`sqliteutils` has some functions to deal with that
 
 ## Installation
 
-You can install sqliteutils from [Github](https://github.com) with:
+You can install the released version of sqliteutils from
+[CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-devtools::install_github("crotman/sqliteutils")
+install.packages("sqliteutils")
 ```
 
 ## Example
 
-SQLIte does not have a date type. When you insert dates in a SQLIte table using `DBI::dbWriteTable()`, for instance, they are converted to a numeric value.
+`SQLIte` does not have a date type. When you insert dates in a SQLIte
+table using `DBI::dbWriteTable()`, for instance, they are converted to a
+numeric value.
 
-Using `slu_date_to_r()` you can convert the value back to the original date.
+Using `slu_date_to_r()` you can convert the value back to the original
+date.
 
 ``` r
 library(sqliteutils)
@@ -39,10 +45,10 @@ original_date <- slu_date_to_r(data_from_bd$date)
 DBI::dbDisconnect(con)
 
 print(original_date)
-
 ```
 
-using `slu_date_to_sqlite()` you can make the inverse: convert a date to the number SQLite would store it if we called `DBI::dbWriteTable()`
+Using `slu_date_to_sqlite()` you can make the inverse: convert a date to
+the number SQLite would store it if we called `DBI::dbWriteTable()`
 
 ``` r
 con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
@@ -61,13 +67,4 @@ print(data_from_bd)
 print(data_with_sqlite_dates)
 
 
-
 ```
-
-
-
-
-
-
-
-
